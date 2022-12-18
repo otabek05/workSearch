@@ -1,0 +1,79 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <nav>
+    <h1><a href="/">Ishga Marhamat!</a></h1>
+    <ul>
+      <li><a href="/user">Orqaga qaytish</a></li>
+      <li><a href="/logout" class="btn">Chiqish</a></li>
+    </ul>
+  </nav>
+  <form class="form" action="">
+    <h2>E'lon Berish</h2>
+    <label for="">Kompanya nomi</label>
+    <input type="text" name="company" id="">
+    <label for="">Ish nomi</label>
+    <input type="text" name="name" id="">
+    <label for="">Ish Turi</label>
+    <select name="category" id="">
+        <option value="IT">IT</option>
+        <option value="medicine">Tibbiyot</option>
+        <option value="finance">Bank va moliya</option>
+        <option value="manager">Manager</option>
+        <option value="education">Ta'lim</option>
+        <option value="others">Va boshqalar</option>
+    </select>
+    <label for="">Ish haqida ma'lumot</label>
+    <textarea name="info" id="" cols="30" rows="10"></textarea>
+    <label for="">Xodim mas'ulyatlari</label>
+    <textarea name="responsibility" id="" cols="30" rows="10"></textarea>
+    <label for="">Ma'lumoti</label>
+    <textarea name="education" id="" cols="30" rows="10"></textarea>
+    <label for="">Ish xaqqi</label>
+    <input type="text" name="salary" id="">
+    <label for="">Aloqa</label>
+    <input type="text" name="contact" id="">
+    <button>Ishni e'lon qilish</button>
+  </form>
+  
+
+<%- include('partials/footer'); -%>
+
+<script>
+    const form = document.querySelector('form')
+    console.log(form)
+    form.addEventListener('submit', async(e)=>{
+
+        // o'zgaruvchilarni kiritish
+        let name=form.name.value;
+        let category=form.category.value;
+        let info =form.info.value;
+        let responsibility=form.responsibility.value;
+        let education= form.education.value;
+        let salary=form.salary.value;
+        let contact=form.contact.value;
+        let company=form.company.value
+
+        
+    try {
+      const res = await fetch('/user/create', { 
+        method: 'POST', 
+        body: JSON.stringify({ name,category,info,responsibility,education,salary,contact,company }),
+        headers: {'Content-Type': 'application/json'}
+      });
+      const data = await res.json();
+      
+     
+
+    }
+    catch (err) {
+      console.log(err);
+    }
+
+    })
+</script>

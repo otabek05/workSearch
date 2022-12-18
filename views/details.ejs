@@ -1,0 +1,17 @@
+<%- include('partials/header'); -%>
+
+
+    <div class="main">
+        <img class="img-main" src="https://iibb.uz/uploads/news/27c5e39eebc429e5c913be7255bb8c93.jpg">
+        <a href="/details/ <%= data._id %>" class="single">
+            <h3 class="title"><%= data.name %></h3>
+            <p class="">Soha:<b style="text-transform:uppercase;"><%= data.category %></b></p>
+            <p class="snippet"><i>Oylik:<%= data.salary %></i></p>    
+            <button>Order</button>
+        </a>
+   
+   </div>
+
+
+<%- include('partials/footer'); -%>
+
